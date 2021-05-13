@@ -187,7 +187,7 @@ margin-top: -25px;
 
 </style>
 
-<form action="{% url 'faq' %}" method="POST" novalidate>
+<form action="{% url 'faq' %}" method="POST">
     {%csrf_token%}
   <input id="input-1" type="number" name="line" placeholder="Enter how many text lines you want to add in image" required autofocus />
   <label for="input-1">
