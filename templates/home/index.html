@@ -1,0 +1,23 @@
+{%extends 'home/base.html'%}
+{%load static %}
+{% block content %}
+    <style>
+        article{position:relative}article ul{position:absolute;top:10;left:0;margin:0;padding:0;width:100%;height:100vh;background-color:grey;overflow:hidden}article ul li.ones{background:url("{% static 'images/page1.jpg'%}");background-size:cover;background-position:left}article ul li.twice{background:url("{% static 'images/page3.jpg'%}");background-size:cover;background-position:left}article ul li.thrice{background:url("{% static 'images/page2.jpg'%}");background-size:cover;background-position:left}article ul li{position:relative;margin:0;padding:0;list-style-type:none;width:33.3%;height:100%;float:left;box-sizing:border-box;transition:.5s;text-align:center;border-right:1px solid #3d3e50}article ul:hover li{width:15%}article ul li:hover{width:70%}article ul li .content{text-align:center;font-size:larger;letter-spacing:20px;position:absolute;bottom:-100%;color:ivory;background-color:rgba(0,0,0,.8)}article ul li:hover .content{padding-left:30px;text-align:center;font-variant:small-caps;bottom:25rem;transition:.5s;transition-delay:.5s}article ul li .content p{letter-spacing:10px;text-transform:lowercase}
+    </style>
+    <article>
+    <ul>
+       <a href="{% url 'faq'%}"><li class="ones"><div class="content">
+            <h1>CERTIFICATION</h1>
+            <p>create your certificate or choose a template</p>
+        </div></li></a>
+        <a href="{% url 'searchforum' %}"><li class="twice"><div class="content">
+            <h1>SEARCH FORUM</h1>
+            <p>Research your awarded certificate</p>
+        </div></li></a>
+        <a href="{% url 'uploading' %}"><li class="thrice"><div class="content">
+            <h1>upload documnets</h1>
+                <p>Registration work</p>
+        </div></li></a>
+</ul>
+</article>
+{% endblock %}

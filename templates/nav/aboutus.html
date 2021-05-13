@@ -1,0 +1,90 @@
+{%extends 'home/base.html'%}
+{%load static%}
+
+{%block content%}
+    <style>
+
+        *{
+            margin: 0%;
+            padding: 0%;
+            font-family: "opne sens",sans-serif;
+            box-sizing: border-box;
+        }
+        body{
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color:red;
+        }
+        .about-us{
+            background: url("{% static 'images/FASTCERTIFY.jpg'%}") no-repeat left;
+            background-size: 55%;
+            background-color: white;
+            overflow: hidden;
+            padding: 100px 0;
+        }
+        .inner-container{
+            width: 55%;
+            float: right;
+            background-color: white;
+            padding: 150px;
+        }
+        .inner-container h1{
+            margin-bottom: 30px;
+            font-size: 30px;
+            font-weight: 900;
+        }
+        .text{
+            font-size: 15px;
+            color: red;
+            line-height: 30px;
+            text-align: justify;
+            margin-bottom: 40px;
+        }
+        .skills{
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        @media screen and (max-width:1200px){
+            .inner-container{
+                padding: 80px;
+            }
+        }
+        @media screen and (max-width:1200px){
+            .about-us{
+                background-size: 100%;
+                padding: 100x 40px;
+            }
+            .inner-container{
+                padding: 80px;
+            }
+        }
+        @media screen and (max-width:600px){
+            .about-us{
+                padding: 0;
+            }
+            .inner-container{
+                padding: 60px;
+            }
+        }
+
+    </style>
+
+    <div class="about-us">
+        <div class="inner-container">
+            <h1>About us</h1>
+            <p class="text">
+                Welcome to fast certify, your number one source for all types of certificate generation is here. We're dedicated to providing you the best of E-certificate with a focus on dependability, customer service, and quality products. As per the growing demand of E-certificate , we are here with the best solution.
+            </p>
+            <div class="skills">
+                <span>Certificate generator</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+{%endblock%}

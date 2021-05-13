@@ -1,0 +1,159 @@
+{%extends 'home/base.html'%}
+{% load static%}
+
+
+{%block content%}
+    <style>
+
+        body{
+            background-color: #0a2a43;
+            height: 100vh;
+        }
+
+      section{
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      section:before{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100px;
+        background: linear-gradient(to top,#0a2a43,transparent);
+        z-index:100 ;
+      }
+      section:after{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:#0a2a43;
+        z-index:100 ;
+        mix-blend-mode:color;
+      }
+
+      #text{
+        position: relative;
+        color: blanchedalmond;
+        font-size: 10em;
+        text-transform: uppercase;
+        z-index: 1;
+      }
+      #road{
+        z-index: 2;
+      }
+      section img{
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        pointer-events: none;
+
+
+      }
+      article{
+        width: 100%;
+        height: 100vh;
+        color: white;
+        display: flex;
+        align-items:center;
+
+
+      }
+      article div form{
+        height: 20vh;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+
+
+      }
+      article div .result{
+
+        display: flex;
+        justify-content: space-between;
+        margin-top: 60px;
+      }
+
+      .form-label{
+        font-variant: small-caps;
+
+      }
+      .sar h1{
+        display: flex;
+        justify-content: center;
+
+      }
+  </style>
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script> -->
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+
+
+
+
+  <section>
+    <img src="{%static 'images/bg.jpg'%}" alt="" id="bg">
+    <img src="{%static 'images/moon.png'%}" alt="" id="moon">
+    <img src="{%static 'images/mountain.png'%}" alt="" id="mountain">
+    <img src="{%static 'images/road.png'%}" alt="" id="road">
+    <h2 id="text">how to use ?</h2>
+  </section>
+  <article>
+    <div class="container mt-3  sar">
+      <form action="" method="POST">
+          {%csrf_token%}
+          <div class="mb-3">
+            <h1><label for="exampleInputEmail1" class="form-label">whats your query</label></h1>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="Enter your query" name="query">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+
+          <button type="submit" class="btn btn-outline-danger">search</button>
+        </form>
+
+        {% if ans %}
+          <h3 style="color: white;" class="result">{{ans}}</h3>
+        {%endif %}
+      </div> -->
+
+  </article>
+
+
+  <script>
+    let bg = document.getElementById('bg')
+    let moon = document.getElementById('moon')
+    let mountain = document.getElementById('mountain')
+    let road = document.getElementById('road')
+    let text = document.getElementById('text')
+
+    window.addEventListener('scroll',function(){
+      var value = window.scrollY;
+      bg.style.top = value*0.5 +'px';
+      moon.style.left = -value*0.5+'px';
+      mountain.style.letopft = -value*0.15+'px';
+      road.style.top = value*0.15+'px';
+      text.style.top = value*1+'px';
+    })
+  </script>
+
+{%endblock%}
+
+
+

@@ -1,0 +1,212 @@
+{%extends 'home/base.html'%}
+{%load static%}
+{% load  crispy_forms_tags%}
+
+{%block content%}
+<style>
+    *{
+        margin: 0%;
+        padding: 0%;
+        font-family: "opne sens",sans-serif;
+        box-sizing: border-box;
+    }
+    body{
+        min-height: 100vh;
+        background-color:rgb(247, 84, 84);
+    }
+    .contact-us{
+        height: 100vh;
+        background: url("{% static 'images/contactimage.jpg'%}") no-repeat center;
+        background-size: 100%;
+        background-color: white;
+        overflow: hidden;
+        padding: 100px 0px;
+    }
+    div.contact-form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+
+    }
+    .inner-container{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        float: center;
+        background-color:rgba(255, 255, 255, 0.6);
+        padding: 150px;
+        transition: all 4s ease-in-out;
+
+    }
+    .inner-container h1{
+        width: 35%;
+        margin-bottom: 20px;
+        font-size: 70px;
+        font-weight: 1000;
+        color: rgb(247, 84, 84);
+        justify-content: center;
+        align-self: flex-end;
+    }
+    .btn{
+       width: 100%;
+       background: transparent;
+       border: none;
+       outline: none;
+       border-bottom: 1px solid;
+       color: rgb(247, 84, 84);
+       font-size: 18px;
+       margin-bottom: 16px;
+    }
+    .pt{
+        position: relative;
+        top: -20px;
+    }
+    form{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 50px;
+        transition: all 4s ease-in-out;
+
+    }
+
+    #id_first_name{
+
+       background: transparent;
+       border: none;
+       outline: none;
+       border-bottom: 1px solid;
+       color: rgb(247, 84, 84);
+       font-size: 18px;
+       margin-bottom: 16px;
+
+    }
+
+    #id_last_name{
+
+       background: transparent;
+       border: none;
+       outline: none;
+       border-bottom: 1px solid;
+       color: rgb(247, 84, 84);
+       font-size: 18px;
+       margin-bottom: 16px;
+
+    }
+
+    #id_message{
+
+       background: transparent;
+       border: none;
+       outline: none;
+       border-bottom: 1px solid;
+       color: rgb(247, 84, 84);
+       font-size: 18px;
+       margin-bottom: 16px;
+
+    }
+
+    .btn{
+        background: wheat;
+        background-color: transparent;
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        height: 50px;
+        margin: 20px;
+        color: rgb(247, 84, 84);
+
+    }
+
+    .text{
+        font-size: 16px;
+        color:rgb(56, 56, 56);
+        line-height: 30px;
+        text-align: justify;
+        margin-bottom: 40px;
+    }
+
+    .message{
+        margin: 20px;
+        font-weight: 700;
+        font-size: 15px;
+    }
+
+    @media (max-width:1280px) and (min-width:968px){
+        .inner-container{
+            padding: 80px;
+        }
+        .inner-container h1{
+            font-size: 50px;
+        }
+
+    }
+
+    @media (max-width:1280px) and (min-width:668px){
+        .inner-container{
+            padding: 80px;
+        }
+        .inner-container h1{
+            font-size: 30px;
+        }
+
+    }
+
+    @media (max-width:900px){
+        .contact-us{
+            background-size: 100%;
+            padding: 100px 40px;
+        }
+        .inner-container{
+            padding: 80px;
+        }
+    }
+
+    @media (max-width:600px){
+        .contact-us{
+            padding: 0;
+        }
+        .inner-container{
+            padding: 60px;
+        }
+    }
+
+    @media (max-width:300px){
+        .contact-us{
+            padding: 0;
+        }
+        .inner-container{
+            padding: 30px;
+        }
+        .text{
+            font-size: 10px;
+        }
+    }
+
+
+</style>
+<div class="contact-us">
+    <div class="inner-container">
+    <div class="contact-form">
+        <h1>Contact us</h1>
+    <form id="contact-form" method="POST" action="">
+        {%csrf_token%}
+        {{form | crispy}}
+        <input type="submit" class="btn btn-outline-danger btn-lg" value="submit">
+    </form>
+    </div>
+    </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+{% if msg %}
+<p> {{msg}}</p>
+{%endif%}
+{%endblock%}
+
+
+</body>
+</html>
+
+

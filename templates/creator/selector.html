@@ -1,0 +1,84 @@
+{%extends 'home/base.html'%}
+{% load static %}
+{% load crispy_forms_tags%}
+{% block content%}
+<style>
+    article{
+        height: 150vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+    }
+
+</style>
+<article>
+<div class="col-sm-4">
+    <div class="card m-2">
+        <a href="{{path}}"><img src="{{path}}" alt="hi" class="card-img-top" height="200px" id="imgreload"></a>
+    </div>
+    <div class="card-footer"></div>
+    <small class="text-muted text-center">{{x.created}}</small>
+    <form action="{% url 'viewer' id %}" method="POST" id="sleep" name="form">
+        {% csrf_token %}
+        {{form|crispy}}
+
+        {% for number in num%}
+            <label for="a{{number}}">Enter the text</label>
+            <input type="text" name="a{{number}}" onchange="mySubmit(this)" value="{{adict}}" required>
+            <label for="b{{number}}">Enter the xaxis number</label>
+            <input type="number" name="b{{number}}" placeholder="Enter the number" onchange="mySubmit(this)" value="290" required>
+            <label for="c{{number}}">Enter the yaxis number</label>
+            <input type="number" name="c{{number}}" onchange="mySubmit(this)" value="160" required>
+            <label for="d{{number}}">Enter the thickness</label>
+            <input type="number" name="d{{number}}" onchange="mysubmit(this)" value="2">
+        {% endfor %}
+
+        <input type="color" name="color" onchange="mySubmit(this)" class="w3">
+        <button type="submit" name="preview" value="preview" class="w3" id="pre">preview</button>
+        <input type="submit" name="submit" value="submit">
+
+    </form>
+</div>
+</article>
+
+<script>
+
+
+    function mySubmit(theForm){
+
+        var $form = $(theForm).closest('form');
+        var dataString = $form.serialize();
+
+        $.ajax({ // create an AJAX call...
+            data: dataString, // $(form).serialize()
+            type: $(form).attr('method'),
+            url: $(form).attr( 'action'),
+            success:function(){
+                var imageSrc = $("#imgreload").attr("src");
+                $("#imgreload").attr("src", imageSrc  + "?" +new Date().getTime())
+                console.log(imageSrc)
+            },
+            aftersend:function(){
+
+            },
+            cache:true,
+        });
+
+
+
+
+    }
+
+</script>
+
+
+{%endblock%}
+
+
+
+

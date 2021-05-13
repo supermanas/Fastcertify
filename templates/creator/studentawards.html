@@ -1,0 +1,15 @@
+{%extends 'home/base.html'%}
+
+{%block content%}
+<div class="row">
+    {% for x in img %}
+        <div class="col-sm-4">
+            <div class="card m-2">
+                <a href="{% url 'viewer' pk=x.id%}"><img src="{{x.image.url}}" alt="" class="card-img-top" height="200px"></a>
+            </div>
+            <div class="card-footer"></div>
+            <small class="text-muted text-center">{{x.created}}</small>
+        </div>
+    {% endfor %}
+</div>
+{%endblock%}
