@@ -1,15 +1,28 @@
 {%extends 'home/base.html'%}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+<link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css'%}">
+<link rel="stylesheet" href="{% static 'css/fontAwesome.css'%}">
+<link rel="stylesheet" href="{% static 'css/light-box.css' %}">
+<link rel="stylesheet" href="{% static 'css/templatemo-style.css' %}">
+
+<link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+<script src="{% static 'js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' % }"></script>
+{% endblock %}
+
 
 {%block content%}
-<style>
+<!-- <style>
 .row{
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-</style>
-<div class="row">
+</style> -->
+<!-- <div class="row">
     {% for x in img %}
         <div class="col-sm-4">
             <div class="card m-2">
@@ -19,5 +32,61 @@
             <small class="text-muted text-center">{{x.created}}</small>
         </div>
     {% endfor %}
-</div>
+</div> -->
+
+
+
+    <div id="video-container">
+        <div class="video-overlay"></div>
+        <div class="video-content">
+            <div class="inner">
+              <h1>Student contribution <em>photos</em></h1>
+              <p>all the templates uploaded are here</p>
+              <p>click below</p>
+                <div class="scroll-icon">
+                    <a class="scrollTo" data-scrollTo="portfolio" href="#"><img src="{% static 'image/eventcreation-min.jpg'%}" alt=""></a>
+                </div>    
+            </div>
+        </div>
+        <video autoplay="" loop="" muted>
+        	<source src="{% static 'highway-loop.mp4' %}" type="video/mp4" />
+        </video>
+    </div>
+
+
+    <div class="full-screen-portfolio" id="portfolio">
+        <div class="container-fluid">
+            {% for x in img %}
+            <div class="col-md-4 col-sm-6">
+                <div class="portfolio-item">
+                    <a href="{% url 'viewer' pk=x.id %}" data-lightbox="image-1"><div class="thumb">
+                        <div class="hover-effect">
+                            <div class="hover-content">
+                                <h1>{{x.name}} <em>squid</em></h1>
+                                <p>{{x.description}}</p>
+                            </div>
+                        </div>
+                        <div class="image">
+                            <img src="{{x.image.url}}">
+                        </div>
+                    </div></a>
+                </div>
+                {% endfor %}
+            </div>
+          
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src={%static "/js/vendor/jquery-1.11.2.min.js" %}><script>')</script>
+
+    <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+    
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+    
+</body>
+</html>
+
+
+
+
 {%endblock%}
