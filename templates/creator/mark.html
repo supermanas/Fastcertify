@@ -1,92 +1,25 @@
-{%extends 'home/base.html'%}
+
 {%load static%}
+
+
+{% block head%}
+        <link rel="stylesheet" href="{%static 'scss/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{%static 'scss/bt2.css' %}">
+        
+        <link rel="stylesheet" href="{%static 'scss/light-box.css' %}">
+        <link rel="stylesheet" href="{%static 'scss/t1.css' %}">
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+
+        <script src="{%static 'sjs/vendor/modernizr-2.8.3-respond-1.4.2.min.js' % }"></script>
+{% endblock %}
 
 {%block content%}
 <style>
-    article{
-        position: relative;
-    }
-
-    article ul{
-        position: absolute;
-        top: 10;
-        left: 0;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100vh;
-        background-color: grey;
-        overflow: hidden;
-
-    }
-    article  ul li.ones
-    {
-        background: url("{% static 'images/studentcontri.jpg'%}");
-        background-size: cover;
-        background-position: left;
-    }
-    article  ul li.twice
-    {
-        background: url("{% static 'signup/images/signup-bg.jpg'%}");
-        background-size: cover;
-        background-position: left;
-    }
-    article  ul li.thrice
-    {
-        background: url("{% static 'images/bg.jpg'%}");
-        background-size: cover;
-        background-position: left;
-    }
-
-    article ul li{
-        position: relative;
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-        width: 20%;
-        height: 100%;
-        float: left;
-        box-sizing: border-box;
-        transition:0.5s;
-        text-align:center;
-        border-right: 1px solid #3d3e50;
-    }
-    article ul:hover li{
-        width: 10%;
-    }
-    article ul li:hover
-    {
-        width: 60%;
-    }
-
-    article ul li .content
-    {
-        text-align: center;
-        font-size: larger;
-        letter-spacing: 20px;
-        position: absolute;
-        bottom: -100%;
-        color: ivory;
-        background-color: rgba(0,0,0,0.8);
-
-    }
-    article ul li:hover .content
-    {
-        padding-left: 30px;
-        text-align: center;
-        font-variant: small-caps;
-        bottom: 25rem;
-        transition: .5s;
-        transition-delay: 0.5s;
-    }
-    article ul li .content p{
-        letter-spacing: 10px;
-        text-transform: lowercase;
-
-    }
+    
 </style>
 <article>
-    <ul>
+    <!-- <ul>
        <a href="{% url 'student-contribution' %}"><li class="ones"><div class="content">
             <h1>student contribution</h1>
             <p>create your certificate or choose a template</p>
@@ -119,6 +52,231 @@
 
 
 
-    </ul>
+    </ul> -->
+
+    
+
+
+    
+    
+          <nav>
+            <div class="logo">
+                <img src="{ static 'img/logo.png' %}" alt="">
+            </div>
+            <div class="mini-logo">
+                <img src="{% static 'img/mini_logo.png' %}" alt="">
+            </div>
+            <ul>
+              <li><a href="#1"><i class="fa fa-home"></i> <em>Student Contribuition</em></a></li>
+              <li><a href="#2"><i class="fa fa-user"></i> <em>Teacher Contribution</em></a></li>
+              <li><a href="#3"><i class="fa fa-pencil"></i> <em>Student Awards</em></a></li>
+              <li><a href="#4"><i class="fa fa-image"></i> <em>Teacher Awards</em></a></li>
+              <li><a href="#5"><i class="fa fa-envelope"></i> <em>Custom</em></a></li>
+            </ul>
+          </nav>
+          
+          
+          <div class="slides">
+              <div class="slide" id="1">
+                <div class="content first-content">
+                  <div class="container-fluid">
+                      <div class="col-md-6">
+                          <div class="left-content">
+                              <h2>About Us</h2>
+                              <p>Please tell your friends about templatemo website. A variety of free CSS templates are available for immediate downloads.</p> 
+                              <p>Phasellus vitae faucibus orci. Etiam eleifend orci sed faucibus semper. Cras varius dolor et augue fringilla, eu commodo sapien iaculis. Donec eget dictum tellus. <a href="#">Curabitur</a> a interdum diam. Nulla vestibulum porttitor porta.</p>
+                              <p>Nulla vitae interdum libero, vel posuere ipsum. Phasellus interdum est et dapibus tempus. Vestibulum malesuada lorem condimentum mauris ornare dapibus. Curabitur tempor ligula et <a href="#">placerat</a> molestie.</p>
+                              <p>Aliquam efficitur eu purus in interdum. <a href="#">Etiam tincidunt</a> magna ex, sit amet lobortis felis bibendum id. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                            <div class="main-btn"><a href="{% url 'student-contribution' %}">Read More</a></div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="right-image">
+                            <img src="img/about_image.jpg" alt="">
+                        </div>
+                        
+                      </div>
+                  </div>
+                </div>
+              </div>
+            
+
+             
+              <div class="slide" id="2">
+                <div class="content first-content">
+                  <div class="container-fluid">
+                      <div class="col-md-6">
+                          <div class="left-content">
+                              <h2>About Us</h2>
+                              <p>Please tell your friends about templatemo website. A variety of free CSS templates are available for immediate downloads.</p> 
+                              <p>Phasellus vitae faucibus orci. Etiam eleifend orci sed faucibus semper. Cras varius dolor et augue fringilla, eu commodo sapien iaculis. Donec eget dictum tellus. <a href="#">Curabitur</a> a interdum diam. Nulla vestibulum porttitor porta.</p>
+                              <p>Nulla vitae interdum libero, vel posuere ipsum. Phasellus interdum est et dapibus tempus. Vestibulum malesuada lorem condimentum mauris ornare dapibus. Curabitur tempor ligula et <a href="#">placerat</a> molestie.</p>
+                              <p>Aliquam efficitur eu purus in interdum. <a href="#">Etiam tincidunt</a> magna ex, sit amet lobortis felis bibendum id. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                            <div class="main-btn"><a href="{% url 'Teacher-contribution' %}">Read More</a></div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="right-image">
+                            <img src="img/about_image.jpg" alt="">
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="slide" id="3">
+                <div class="content third-content">
+                    <div class="container-fluid">
+                        <div class="col-md-6">
+                            <div class="left-content">
+                                <h2>About Us</h2>
+                                <p>Please tell your friends about templatemo website. A variety of free CSS templates are available for immediate downloads.</p> 
+                                <p>Phasellus vitae faucibus orci. Etiam eleifend orci sed faucibus semper. Cras varius dolor et augue fringilla, eu commodo sapien iaculis. Donec eget dictum tellus. <a href="#">Curabitur</a> a interdum diam. Nulla vestibulum porttitor porta.</p>
+                                <p>Nulla vitae interdum libero, vel posuere ipsum. Phasellus interdum est et dapibus tempus. Vestibulum malesuada lorem condimentum mauris ornare dapibus. Curabitur tempor ligula et <a href="#">placerat</a> molestie.</p>
+                                <p>Aliquam efficitur eu purus in interdum. <a href="#">Etiam tincidunt</a> magna ex, sit amet lobortis felis bibendum id. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                              <div class="main-btn"><a href="{% url 'student-awards'%}">Read More</a></div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="right-image">
+                              <img src="img/about_image.jpg" alt="">
+                          </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            
+            
+              <div class="slide" id="4">
+                <div class="content third-content">
+                    <div class="container-fluid">
+                      <div class="col-md-6">
+                          <div class="left-content">
+                              <h2>About Us</h2>
+                              <p>Please tell your friends about templatemo website. A variety of free CSS templates are available for immediate downloads.</p> 
+                              <p>Phasellus vitae faucibus orci. Etiam eleifend orci sed faucibus semper. Cras varius dolor et augue fringilla, eu commodo sapien iaculis. Donec eget dictum tellus. <a href="#">Curabitur</a> a interdum diam. Nulla vestibulum porttitor porta.</p>
+                              <p>Nulla vitae interdum libero, vel posuere ipsum. Phasellus interdum est et dapibus tempus. Vestibulum malesuada lorem condimentum mauris ornare dapibus. Curabitur tempor ligula et <a href="#">placerat</a> molestie.</p>
+                              <p>Aliquam efficitur eu purus in interdum. <a href="#">Etiam tincidunt</a> magna ex, sit amet lobortis felis bibendum id. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                            <div class="main-btn"><a href="{% url 'teacher-awards'%}">Read More</a></div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="right-image">
+                            <img src="img/about_image.jpg" alt="">
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+              <div class="slide" id="5">
+                <div class="content fourth-content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <a href="img/first_big_item.jpg" data-lightbox="image-1"><div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Number One</h2>
+                                                <p>Quisque sit amet lacus in diam pretium faucibus. Cras vel justo lorem.</p>
+                                            </div>
+                                        </div></a>
+                                        <div class="image">
+                                            <img src="img/first_item.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <a href="img/second_big_item.jpg" data-lightbox="image-1"><div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Number Two</h2>
+                                                <p>Donec eget dictum tellus. Curabitur a interdum diam. Nulla vestibulum porttitor porta.</p>
+                                            </div>
+                                        </div></a>
+                                        <div class="image">
+                                            <img src="img/second_item.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <a href="img/third_big_item.jpg" data-lightbox="image-1"><div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Number Three</h2>
+                                                <p>Cras varius dolor et augue fringilla, eu commodo sapien iaculis.</p>
+                                            </div>
+                                        </div></a>
+                                        <div class="image">
+                                            <img src="img/third_item.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h2 style="color: white;">custom</h2>
+                            
+                            <h1><div class="main-btn"><a href="{% url 'custom'%}">Read More</a></div></h1>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+              
+            
+    
+   
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+  
+      <script src="{% static 'sjs/vendor/bootstrap.min.js' % }"></script>
+      
+      <script src="{% static 'sjs/datepicker.js' % }"></script>
+      <script src="{% static 'sjs/plugins.js' % }"></script>
+      <script src="{% static 'sjs/main.js' % }"></script>
+  
+      <script type="text/javascript">
+      $(document).ready(function() {
+  
+          
+  
+          // navigation click actions 
+          $('.scroll-link').on('click', function(event){
+              event.preventDefault();
+              var sectionID = $(this).attr("data-id");
+              scrollToID('#' + sectionID, 750);
+          });
+          // scroll to top action
+          $('.scroll-top').on('click', function(event) {
+              event.preventDefault();
+              $('html, body').animate({scrollTop:0}, 'slow');         
+          });
+          // mobile nav toggle
+          $('#nav-toggle').on('click', function (event) {
+              event.preventDefault();
+              $('#main-nav').toggleClass("open");
+          });
+      });
+      // scroll function
+      function scrollToID(id, speed){
+          var offSet = 0;
+          var targetOffset = $(id).offset().top - offSet;
+          var mainNav = $('#main-nav');
+          $('html,body').animate({scrollTop:targetOffset}, speed);
+          if (mainNav.hasClass("open")) {
+              mainNav.css("height", "1px").removeClass("in").addClass("collapse");
+              mainNav.removeClass("open");
+          }
+      }
+      if (typeof console === "undefined") {
+          console = {
+              log: function() { }
+          };
+      }
+      </script>
 </article>
 {%endblock%}
