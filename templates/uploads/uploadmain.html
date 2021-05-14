@@ -18,7 +18,70 @@
         <link rel="stylesheet" href="../../static/vancss/owl-carousel.css">
 
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-
+        <style>
+            .con {
+    max-width: 1220px;
+    padding: 0;
+    padding: 20px 100px;
+}
+.navbar {
+    position: fixed;
+    z-index: 10000;
+    width: 100%;
+    padding: 30px 0;
+    transition: all 0.3s ease;
+}
+.navbar.sticky {
+    padding: 5px 0;
+    background-color: rgba(0, 0, 0, 0.555);
+}
+.navbar .con {
+    display: flex;
+    justify-content: flex-start;
+}
+.navbar .menu-list {
+    display: inline-flex;
+    justify-content: flex-end;
+    padding: 0 310px;
+    align-items: center;
+}
+.navbar .logo {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.menu-list li {
+    list-style-type: none;
+    text-decoration: none;
+    padding: 0 37px;
+    width: 100%;
+}
+.menu-list li a {
+    color: #fff;
+    font-size: 25px;
+    padding: 0 30px;
+    font-weight: 500;
+    text-decoration: none;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.menu-list li a:hover {
+    color: rgba(7, 224, 214, 0.705);
+}
+.icon {
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+}
+.icont.cancel-btn {
+    position: absolute;
+    right: 30px;
+    top: 20px;
+}
+        </style>
+        
         
     </head>
 <!--
@@ -27,11 +90,36 @@ https://templatemo.com/tm-526-vanilla
 -->
 <body>
 
+    <nav class="navbar">
+        <div class="con">
+        <div class="logo"><a href="{% url 'home'%}"><img src="{% static 'images/slogo.JPG'%}" alt="logo" style="width: 190px;"></a></div>
+       <ul class="menu-list">
+        <div class="icon cancel-btn">
+            <i class="fas fa-times"></i>
+        </div>
+           <li><a href="{% url 'home'%}">Home</a></li>
+           <li><a href="{% url 'aboutus' %}">About&nbsp;Us</a></li>
+           <li><a href="{% url 'contacts' %}">Contact&nbsp;Us</a></li>
+           <li><a href="{% url 'help'%}">Help</a></li>
+           {% if user.is_authenticated %}
+           <li style="color: rgb(3, 184, 184);">Hello <strong>{{user.first_name}}</strong></li>
+           <li><a href="{% url 'logout' %}">Logout</a></li>
+           {% else %}
+           <li><a href="accounts/login/">Login</a></li>
+           {%endif%}
+       </ul>
+       <div class="icon menu-btn">
+           <i class="fas fa-bars"></i>
+       </div>
+       </div>
+    </nav>
+
     <div class="fixed-side-navbar">
         <ul class="nav flex-column">
             <li class="nav-item"><a class="nav-link" href="#home"><span>Intro</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#services"><span>Services</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#portfolio"><span>Portfolio</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#services"><span>upload file</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#portfolio"><span>create events</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact-us"><span>upload certificates</span></a></li>
             
         </ul>
     </div>
@@ -52,6 +140,7 @@ https://templatemo.com/tm-526-vanilla
     <div class="service-content" id="services">
         <div class="container">
             <div class="upload-form">
+                
 
                 <form action="{%url 'uploading'%}" id="upload-form" method="POST" enctype="multipart/form-data" class="up">
                    {%csrf_token%}
@@ -256,6 +345,28 @@ https://templatemo.com/tm-526-vanilla
           });
         });
     </script>
+    <script>
+        const body = document.querySelector("body")
+        const navbar = document.querySelector(".navbar")
+        const menu = document.querySelector(".menu-list");
+        const menuBtn = document.querySelector(".menu-btn");
+        const cancelBtn = document.querySelector(".cancel-btn");
+        menuBtn.onclick = ()=>{
+            menu.classList.add("active");
+            menuBtn.classList.add("hide");
+            body.classList.add("disabledscroll")
+        }
+        cancelBtn.onclick = ()=>{
+            menu.classList.remove("active");
+            menuBtn.classList.remove("hide");
+            body.classList.remove("disabledscroll")
+        }
+        window.onscroll = ()=>{
+            this.scrollY >20 ? navbar.classList.add("sticky"):navbar.classList.remove("sticky");
+        }
+
+    </script>
+
 
 </body>
 </html>

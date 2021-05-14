@@ -21,11 +21,16 @@ def upload_docs(request):
             en_id = request.POST.get("events")
             year = request.POST.get("year")
             fil = request.FILES['file']
-            # en = events.objects.get(id=en_id)
+            en = events.objects.get(id=en_id)
             if not fil.name.endswith('.csv'):
                 messages.error(request,'this is not a csv file')
                 return HttpResponse("not csv file")
             else:
+                file_upload.objects.create(
+                    eventName=en,
+                    eventYear=year,
+                    fileupload=fil
+                )
                 return HttpResponse("File was uploaded")
         elif request.POST.get('su'):
             register = eventregister(request.POST)
@@ -44,13 +49,13 @@ def upload_docs(request):
                     return JsonResponse(data)
 
 
-            else:
-                register = eventregister(request.POST)
-                if register.is_valid():
-                    register.save()
-                    return redirect('/upload/')
-                else:
-                    messages.error(request,'Something went wrong')
+            # else:
+            #     register = eventregister(request.POST)
+            #     if register.is_valid():
+            #         register.save()
+            #         return redirect('/upload/')
+            #     else:
+            #         messages.error(request,'Something went wrong')
 
 
     else:
