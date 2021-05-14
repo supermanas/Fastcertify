@@ -31,7 +31,7 @@
             {% for x in img %}
             <div class="col-md-4 col-sm-6">
                 <div class="portfolio-item">
-                    <a href="{% url 'viewer' pk=x.id %}" data-lightbox="image-1"><div class="thumb">
+                    <a href="{% url 'viewer' pk=x.id %}" ><div class="thumb">
                         <div class="hover-effect">
                             <div class="hover-content">
                                 <h1>{{x.name}} <em>squid</em></h1>
@@ -43,8 +43,10 @@
                         </div>
                     </div></a>
                 </div>
+                </div>
                 {% endfor %}
             </div>
+        </div>
 
 
 
