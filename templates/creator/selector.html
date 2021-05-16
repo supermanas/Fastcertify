@@ -3,39 +3,43 @@
 {% load crispy_forms_tags%}
 {% block content%}
 <style>
-    article{
-        height: 150vh;
+    form label{
+        color:white
+    }
+
+    .alignment{
+        height: 200vh;
+        width: 100%;
         display: flex;
-        justify-content: center;
+        flex-direction: row-reverse;
+        justify-content: space-around;
         align-items: center;
-        flex-direction: column;
     }
-    form{
-        display: flex;
-        flex-direction: column;
-    }
+    
 
 </style>
 <article>
-<div class="col-sm-4">
+<div class="col-sm-4 alignment">
     <div class="card m-2">
-        <a href="{{path}}"><img src="{{path}}" alt="hi" class="card-img-top" height="200px" id="imgreload"></a>
+        <a href="{{path}}"><img src="{{path}}" alt="hi" class="card-img-top srr" height="200px" id="imgreload"></a>
     </div>
-    <div class="card-footer"></div>
     <small class="text-muted text-center">{{x.created}}</small>
     <form action="{% url 'viewer' id %}" method="POST" id="sleep" name="form">
         {% csrf_token %}
         {{form|crispy}}
 
+
+        
         {% for number in num%}
             <label for="a{{number}}">Enter the text</label>
-            <input type="text" name="a{{number}}" onchange="mySubmit(this)" value="{{adict}}" required>
+            <input type="text" name="a{{number}}" onchange="mySubmit(this)" value="{{rest.0}}" required>
             <label for="b{{number}}">Enter the xaxis number</label>
             <input type="number" name="b{{number}}" placeholder="Enter the number" onchange="mySubmit(this)" value="290" required>
             <label for="c{{number}}">Enter the yaxis number</label>
             <input type="number" name="c{{number}}" onchange="mySubmit(this)" value="160" required>
             <label for="d{{number}}">Enter the thickness</label>
             <input type="number" name="d{{number}}" onchange="mysubmit(this)" value="2">
+            
         {% endfor %}
 
         <input type="color" name="color" onchange="mySubmit(this)" class="w3">

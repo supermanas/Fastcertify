@@ -25,7 +25,7 @@ urlpatterns = [
     path('',include('loginsystem.urls')),
     path('accounts/', include('allauth.urls')),
     path('accounts/logout/',TemplateView.as_view(template_name='logout.html'),name='logout'),
-    path('upload/',include('upload.urls')),
+    path('upload/',include('upload.urls'),name='upload'),
     path('certificate/',include('creator.urls')),
 ]
 

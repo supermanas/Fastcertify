@@ -59,8 +59,8 @@ def viewer(request,pk):
     asper=[]
     for x in range(0,sr):
         asper.append('a'+ str(x))
-    print(asper)
     adict={}
+    tt = 0
     resting=[]
     empty = 0
 
@@ -103,7 +103,7 @@ def viewer(request,pk):
                     cv.putText(img, texter ,(xcordinate ,ycordinate ),font, font_size,font_color, thicker)
 
                 certi_path = output_path + certi_name + '.png'
-                print(certi_path)
+                
                 cv.imwrite(certi_path,img)
                 img_data = open(certi_path,'rb').read()
                 mail = EmailMessage(subject, message, settings.EMAIL_HOST_USER, [certi_email])
@@ -157,7 +157,9 @@ def viewer(request,pk):
                 ycordinate = int(request.POST.get("c"+i))
                 thicker = int(request.POST.get("d"+i))
                 adict["a"+i]=texter
-                print(adict.get("a"+i))
+                resting.append(texter)
+                print(resting)
+                # print(adict.get("a"+i))
                 cv.putText(img, texter ,(xcordinate ,ycordinate ),font, font_size,font_color, thicker)
 
             # counter=len(resting)
@@ -176,6 +178,8 @@ def viewer(request,pk):
                 'id':pk,
                 'num':asper,
                 'adict':adict,
+                'rest':resting,
+                'tt':tt
 
 
             }
@@ -183,7 +187,7 @@ def viewer(request,pk):
     else:
         form = maker(request.POST)
         img = Photo.objects.get(id=pk)
-        context = {'path':img.image.url,'form':form,'id':pk,'num': asper,'adict':adict}
+        context = {'path':img.image.url,'form':form,'id':pk,'num': asper,'adict':adict,'rest':resting,'tt':tt}
         return render(request,'creator/selector.html',context)
 
 

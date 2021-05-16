@@ -1,10 +1,11 @@
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import file_upload,events
+from .models import file_upload,events,Photo
 from .forms import UploadForm,eventregister,fetcher,PhotoForm
 from django.http import JsonResponse
 import pandas as pd
+from django.http import HttpResponseRedirect
 
 
 # Create your views here.
@@ -31,12 +32,12 @@ def upload_docs(request):
                     eventYear=year,
                     fileupload=fil
                 )
-                return HttpResponse("File was uploaded")
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         elif request.POST.get('su'):
             register = eventregister(request.POST)
             if register.is_valid():
                 register.save()
-                return redirect('/')
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         else:
             photof = PhotoForm(request.POST or None,request.FILES or None)
@@ -47,16 +48,6 @@ def upload_docs(request):
                     data['name'] = photof.cleaned_data.get('name')
                     data['status']='ok'
                     return JsonResponse(data)
-
-
-            # else:
-            #     register = eventregister(request.POST)
-            #     if register.is_valid():
-            #         register.save()
-            #         return redirect('/upload/')
-            #     else:
-            #         messages.error(request,'Something went wrong')
-
 
     else:
         reg = eventregister()
@@ -104,9 +95,11 @@ def searchforum(request):
     else:
         form = fetcher()
         ev = events.objects.all()
-
+        ph = Photo.objects.all()
+        
         context = {
             'form':form,
-            'events':ev
+            'events':ev,
+            'photo':ph,
         }
         return render(request,'searchforum/searchmain.html',context)
