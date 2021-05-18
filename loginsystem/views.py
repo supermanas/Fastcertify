@@ -24,29 +24,29 @@ def contacts(request):
         messaging = request.POST['message']
         contactsave = Contact(first_name=fname,last_name=lname,email=emailing,message=messaging)
         contactsave.save()
-        co = whatsappdata(messaging)
-        if co==True:
-            msg = "message sent successfully"
-        else:
-            msg = "there was some error in the process try again"
+        # co = whatsappdata(messaging)
+        # if co==True:
+        #     msg = "message sent successfully"
+        # else:
+        #     msg = "there was some error in the process try again"
         return redirect('/')
     else:
         form = ContactForm()
         context = {'form':form}
         return render(request,'nav/contacts.html',context)
 
-def whatsappdata(message):
-    import time
-    import webbrowser as web
-    import pyautogui as pg
+# def whatsappdata(message):
+#     import time
+#     import webbrowser as web
+#     import pyautogui as pg
 
-    pn="9425367540"
-    phone="+91"+pn
-    web.open('https://web.whatsapp.com/send?phone='+phone+'&text='+message)
-    time.sleep(20)
-    pg.press('enter')
+#     pn="9425367540"
+#     phone="+91"+pn
+#     web.open('https://web.whatsapp.com/send?phone='+phone+'&text='+message)
+#     time.sleep(20)
+#     pg.press('enter')
 
-    return redirect('/')
+#     return redirect('/')
 
 def helping(request):
     """
