@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from passwords import email,password
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -84,10 +85,9 @@ AUTHENTICATION_BACKENDS = [
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "rahul1991modi@gmail.com"
-EMAIL_HOST_PASSWORD = "@R@hul123"
+EMAIL_HOST_USER = email
+EMAIL_HOST_PASSWORD = password
 EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL ="kirtipunjabi0@gmail.com"
 
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
