@@ -3,3 +3,5 @@ passwords.py
 Procfile
 
 DS_Store/
+
+db.sqlite3
