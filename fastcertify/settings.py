@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-from passwords import email,password
+from passwords import email,password,secret
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '=^-b0bwh!w9ppdaqjil8#h-znt=wtuz^6#-$@qafr_raf#hcfr'
+SECRET_KEY = secret
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

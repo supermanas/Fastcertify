@@ -1,1 +1,0 @@
-web: gunicorn fastcertify.wsgi --log-file -
